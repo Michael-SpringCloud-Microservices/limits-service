@@ -18,6 +18,14 @@ ext {
 	set('springCloudVersion', 'Greenwich.RELEASE')
 }
 
+bootRun {
+	if (project.hasProperty('args')) {
+		args project.args.split(',')
+	}
+	// support passing -Dsystem.property=value to bootRun task
+	systemProperties = System.properties
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

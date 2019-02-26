@@ -28,7 +28,7 @@ Configuration:
 bootRun {
 	// support passing -Dsystem.property=value to bootRun task
 	systemProperties = System.properties
-}s
+}
 
 Command:
 gradlew bootRun -Dname=Mike -Dspring.cloud.config.profile=stage

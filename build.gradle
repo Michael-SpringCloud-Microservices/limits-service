@@ -29,6 +29,7 @@ bootRun {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// The following implementation is for enabling this service to be a config client
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

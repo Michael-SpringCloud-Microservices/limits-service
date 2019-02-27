@@ -38,3 +38,6 @@ Passing Profile - Approach3:
 
 Hard code the following configuration at 'bootstrap.properties'
 spring.cloud.config.profile={profile} 
+----------------------------------------------------------------------------------------------------------------
+
+To get the 'LimitsServiceApplicationTests' passed, we have to have the Spring Cloud Config Server up and running.

@@ -1,6 +1,8 @@
 # limits-service
 Limits Service - Config Client
 
+# spring.cloud.config.profile is for setting the profile for spring cloud config
+# spring.profiles.active is for setting the profile for spring boot config like yml or properties file reference
 -------------------------------------------------------------------------------------------------------------------------
 Passing Profile - Approach1:
 
@@ -14,7 +16,7 @@ bootRun {
 }
 
 Command:
-gradlew bootRun -Pargs=--name=Mike,--spring.cloud.config.profile=stage
+gradlew bootRun -Pargs=--name=Mike,--spring.cloud.config.profile=stage,--spring.profiles.active=stage
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
 
@@ -31,7 +33,7 @@ bootRun {
 }
 
 Command:
-gradlew bootRun -Dname=Mike -Dspring.cloud.config.profile=stage
+gradlew bootRun -Dname=Mike -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage
 
 -------------------------------------------------------------------------------------------------------------------------
 Passing Profile - Approach3:

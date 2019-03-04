@@ -18,6 +18,7 @@ ext {
 	set('springCloudVersion', 'Greenwich.RELEASE')
 }
 
+//The Following is Custom Configuration
 bootRun {
 	if (project.hasProperty('args')) {
 		args project.args.split(',')

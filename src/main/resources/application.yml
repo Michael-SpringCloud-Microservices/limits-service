@@ -1,0 +1,33 @@
+#limits-service is the prefix which is used to read all the properties declared here by Configuration class
+#via the ConfigurationProperties annotation
+limits-service:
+  minimum: 6
+  maximum: 6666
+
+---
+spring:
+  profiles: default
+#The following configuration will expose all management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+---
+spring:
+  profiles: dev
+#The following configuration will expose only the configured endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+---
+spring:
+  profiles: qa,stage,prod
+#The following configuration will expose only the configured endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh

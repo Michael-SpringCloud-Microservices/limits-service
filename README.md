@@ -16,7 +16,8 @@ bootRun {
 }
 
 Command:
-gradlew bootRun -Pargs=--name=Mike,--spring.cloud.config.profile=stage,--spring.profiles.active=stage
+instance 1 : gradlew bootRun -Pargs=--server.port=8080,--spring.cloud.config.profile=stage,--spring.profiles.active=stage
+instance 1 : gradlew bootRun -Pargs=--server.port=8081,--spring.cloud.config.profile=stage,--spring.profiles.active=stage
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
 
@@ -33,7 +34,15 @@ bootRun {
 }
 
 Command:
-gradlew bootRun -Dname=Mike -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage
+instance 1 : gradlew bootRun -Dserver.port=8080 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage
+instance 2 : gradlew bootRun -Dserver.port=8081 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage
+
+
+Note:
+If you want to register all the service instances to Rabbit MQ (Spring Cloud Bus Implementation) then
+we have to run the following command for higher environments if they Rabbit MQ Message Broker is running in different machine than the host one
+instance 1 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8080 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage   
+instance 2 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8081 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage   
 
 -------------------------------------------------------------------------------------------------------------------------
 Passing Profile - Approach3:

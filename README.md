@@ -16,8 +16,8 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -Pargs=--server.port=8080,--spring.cloud.config.profile=stage,--spring.profiles.active=stage
-instance 1 : gradlew bootRun -Pargs=--server.port=8081,--spring.cloud.config.profile=stage,--spring.profiles.active=stage
+instance 1 : gradlew bootRun -Pargs=--server.port=8080,--spring.cloud.config.profile=stage,--spring.profiles.active=stage -Dlogging.level.org.springframework=OFF
+instance 1 : gradlew bootRun -Pargs=--server.port=8081,--spring.cloud.config.profile=stage,--spring.profiles.active=stage -Dlogging.level.org.springframework=OFF
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
 

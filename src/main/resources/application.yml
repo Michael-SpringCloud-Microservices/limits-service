@@ -3,7 +3,7 @@
 limits-service:
   minimum: 6
   maximum: 6666
-
+    
 ---
 spring:
   profiles: default

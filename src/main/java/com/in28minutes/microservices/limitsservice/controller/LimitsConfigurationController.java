@@ -10,6 +10,7 @@ import com.in28minutes.microservices.limitsservice.configuration.Configuration;
 import com.in28minutes.microservices.limitsservice.model.FrequentlyChangedMessagesBean;
 import com.in28minutes.microservices.limitsservice.model.LimitsConfiguration;
 import com.in28minutes.microservices.limitsservice.model.MessagesBean;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 @RestController
 public class LimitsConfigurationController implements InitializingBean,DisposableBean {
 
@@ -40,6 +41,16 @@ public class LimitsConfigurationController implements InitializingBean,Disposabl
 	public LimitsConfiguration retrieveLimitsFromPropertyFile() {
 		return new LimitsConfiguration(configuration.getMaximum(),configuration.getMinimum());
 
+	}
+
+	@GetMapping("/limits-fault-tolerance")
+	@HystrixCommand(fallbackMethod="fallbackLimitsMethods")
+	public LimitsConfiguration retrieveLimitsWithHystrix() {
+		throw new RuntimeException("Not Available");
+	}
+
+	public LimitsConfiguration fallbackLimitsMethods() {
+		return new LimitsConfiguration(9,9999);
 	}
 
 	/**

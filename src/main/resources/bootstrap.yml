@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       #The following is the URL for fetching configuration from Git based file system via Spring Cloud Config Server
-      uri: http://localhost:8888
+      uri: {config-server-url}
       #The following is the URL for fetching configuration from Local file system via Spring Cloud Config Server
       #uri: http://localhost:8889
       #The following value has to be passed as 'VM argument' or 'Java Application argument' at part of deployment and startup

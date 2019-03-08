@@ -16,8 +16,12 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -Pargs=--server.port=8080,--spring.cloud.config.profile=stage,--spring.profiles.active=stage -Dlogging.level.org.springframework=OFF
-instance 1 : gradlew bootRun -Pargs=--server.port=8081,--spring.cloud.config.profile=stage,--spring.profiles.active=stage -Dlogging.level.org.springframework=OFF
+instance 1 : gradlew bootRun -Pargs=--server.port=8080,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,
+--config-server-url=http://localhost:8888
+
+
+instance 2 : gradlew bootRun  -Pargs=--server.port=8081,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,
+--config-server-url=http://localhost:8888
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
 
@@ -34,8 +38,9 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -Dserver.port=8080 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage
-instance 2 : gradlew bootRun -Dserver.port=8081 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage
+instance 1 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8080 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage -Deureka-server-url=http://localhost:8761/eureka -Dconfig-server-url=http://localhost:8888
+
+instance 2 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8081 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage -Deureka-server-url=http://localhost:8761/eureka -Dconfig-server-url=http://localhost:8888
 
 
 Note:
@@ -49,9 +54,11 @@ Passing Profile - Approach3:
 
 Hard code the following configuration at 'bootstrap.properties'
 spring.cloud.config.profile={profile} 
+
 ----------------------------------------------------------------------------------------------------------------
 
 Note: To refresh the config server values bound to any property during the boot time , we need to refresh via actuator (post call) http://localhost:8080/actuator/refresh 
-
+(or)
+http://localhost:8080/actuator/bus-refresh 
 
 Note: To get the 'LimitsServiceApplicationTests' passed, we have to have the Spring Cloud Config Server up and running.

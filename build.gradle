@@ -36,7 +36,9 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
 	
 	// Spring cloud bus implementation
-	implementation 'org.springframework.amqp:spring-rabbit'
+	//implementation 'org.springframework.amqp:spring-rabbit'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+	
 	
 		
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'

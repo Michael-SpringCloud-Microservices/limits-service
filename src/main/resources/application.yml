@@ -3,7 +3,7 @@
 limits-service:
   minimum: 6
   maximum: 6666
-    
+
 ---
 spring:
   profiles: default
@@ -13,6 +13,7 @@ management:
     web:
       exposure:
         include: '*'
+
 ---
 spring:
   profiles: dev
@@ -24,7 +25,7 @@ management:
         include: '*'
 ---
 spring:
-  profiles: qa,stage,prod
+  profiles: qa,stage,prod 
 #The following configuration will expose only the configured endpoints
 management:
   endpoints:

@@ -9,3 +9,8 @@ spring:
       #uri: http://localhost:8889
       #The following value has to be passed as 'VM argument' or 'Java Application argument' at part of deployment and startup
       profile: {profile}
+      
+eureka:
+  client:
+    service-url:
+      default-zone: {eureka-server-url}

@@ -16,12 +16,10 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -Pargs=--server.port=8080,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,
---config-server-url=http://localhost:8888
+instance 1 : gradlew bootRun -Pargs=--server.port=8080,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
 
 
-instance 2 : gradlew bootRun  -Pargs=--server.port=8081,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,
---config-server-url=http://localhost:8888
+instance 2 : gradlew bootRun  -Pargs=--server.port=8081,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
 
@@ -62,4 +60,4 @@ Note: To refresh the config server values bound to any property during the boot 
 (or)
 http://localhost:8080/actuator/bus-refresh 
 
-Note: To get the 'LimitsServiceApplicationTests' passed, we have to have the Spring Cloud Config Server up and running.
+Note: To get the 'LimitsServiceApplicationTests' passed, we have to have the 'Spring Cloud Config Server' and 'Naming Server' up and running.

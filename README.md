@@ -16,10 +16,11 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -Pargs=--server.port=8080,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
+instance 1 : gradlew bootRun -Pargs=--server.port=8050,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
 
 
-instance 2 : gradlew bootRun  -Pargs=--server.port=8081,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
+instance 2 : gradlew bootRun  -Pargs=--server.port=8051,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
+
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
 
@@ -36,9 +37,9 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8080 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage -Deureka-server-url=http://localhost:8761/eureka -Dconfig-server-url=http://localhost:8888
+instance 1 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8050 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage -Deureka-server-url=http://localhost:8761/eureka -Dconfig-server-url=http://localhost:8888
 
-instance 2 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8081 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage -Deureka-server-url=http://localhost:8761/eureka -Dconfig-server-url=http://localhost:8888
+instance 2 : gradlew bootRun -DRABBIT_URI=amqp://localhost -Dserver.port=8051 -Dspring.cloud.config.profile=stage -Dspring.profiles.active=stage -Deureka-server-url=http://localhost:8761/eureka -Dconfig-server-url=http://localhost:8888
 
 
 Note:

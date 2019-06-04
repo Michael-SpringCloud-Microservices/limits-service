@@ -16,10 +16,10 @@ bootRun {
 }
 
 Command:
-instance 1 : gradlew bootRun -Pargs=--server.port=8050,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
+instance 1 : gradlew bootRun -Pargs=--server.port=8050,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
 
 
-instance 2 : gradlew bootRun  -Pargs=--server.port=8051,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
+instance 2 : gradlew bootRun  -Pargs=--server.port=8051,--RABBIT_URI=amqp://localhost,--spring.cloud.config.profile=stage,--spring.profiles.active=stage,--logging.level.org.springframework=OFF,--eureka-server-url=http://localhost:8761/eureka,--config-server-url=http://localhost:8888
 
 
 Source -> Ref Link : https://www.baeldung.com/spring-boot-command-line-arguments
@@ -60,5 +60,14 @@ spring.cloud.config.profile={profile}
 Note: To refresh the config server values bound to any property during the boot time , we need to refresh via actuator (post call) http://localhost:8080/actuator/refresh 
 (or)
 http://localhost:8080/actuator/bus-refresh 
+
+
+The exchange used by Spring Cloud Bus to publish the refresh event -> springCloudBusRefreshExchange (It is a Topic type exchange)
+
+The routing key used by Spring Cloud Bus to publish the refresh event -> #
+
+The queue used by Spring Cloud Bus to receive the refresh event details and refresh the config details in the service level -> springCloudBusRefreshQueue
+
+
 
 Note: To get the 'LimitsServiceApplicationTests' passed, we have to have the 'Spring Cloud Config Server' and 'Naming Server' up and running.

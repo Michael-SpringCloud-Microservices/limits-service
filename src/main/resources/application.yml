@@ -17,7 +17,7 @@ management:
 ---
 spring:
   profiles: dev
-#The following configuration will expose only the configured endpoints
+#The following configuration will expose all management endpoints
 management:
   endpoints:
     web:
